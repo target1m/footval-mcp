@@ -5,7 +5,8 @@
   "description": "Independent football player valuations, live scores, league tables, stat leaders and transfer news. Ask what any player is really worth and why FootVal agrees or disagrees with the market, compare and scout players, and follow scores, match centres and tables — all read-only.",
   "author": {
     "name": "FootVal",
-    "url": "https://footval.com/"
+    "url": "https://footval.com/",
+    "email": "admin@footval.com"
   },
   "homepage": "https://footval.com/en/mcp",
   "repository": "https://github.com/target1m/footval-mcp",
@@ -23,5 +24,37 @@
     "premier league",
     "la liga",
     "super lig"
-  ]
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "FootVal",
+        "shortDescription": "Player values, stats & scores",
+        "longDescription": "FootVal brings independent football player valuations, statistics and live scores into ChatGPT.\n\nAsk what a footballer is worth and get FootVal's estimated transfer value next to the market value, with the factors that explain the gap: performance, age and potential, contract, durability, reputation and form. Compare up to four players side by side, scout by league, club, nation, position, age, preferred foot and value, and list the most valuable, most undervalued and most overvalued players, the biggest risers and the best young talents.\n\nFootVal also covers live football: scores and fixtures, match centres with events, team statistics and line-ups, league tables, a team's next and recent matches, season leaderboards for goals and assists, and the latest transfer news and rumours. Results appear as interactive cards you can tap through to a player, club, league or match.\n\nWho it is for: football fans, fantasy managers, writers and anyone curious about what players are worth.\n\nGood to know: FootVal's values are model estimates, not offers or financial advice. Player valuations cover the European top divisions plus MLS and the Saudi Pro League; live data covers the competitions FootVal follows. FootVal is read-only: it never posts, buys or changes anything. Connecting requires signing in to FootVal.",
+        "developerName": "FootVal",
+        "category": "Entertainment",
+        "capabilities": [
+          "Estimate a player's transfer value and explain it",
+          "Compare players side by side",
+          "Find undervalued, overvalued and rising players",
+          "Scout players by league, position, age and value",
+          "Live scores, match centres and league tables",
+          "Season statistics and transfer news"
+        ],
+        "websiteURL": "https://footval.com/en/mcp",
+        "supportURL": "https://footval.com/en/support",
+        "privacyPolicyURL": "https://footval.com/en/privacy",
+        "termsOfServiceURL": "https://footval.com/en/terms",
+        "defaultPrompt": [
+          "What is Lamine Yamal really worth, and why?",
+          "Who are the most undervalued players in the Premier League?",
+          "Find left-footed centre-backs aged 23 or under in Serie A."
+        ],
+        "brandColor": "#11915F",
+        "brandColorDark": "#10B981",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
 }

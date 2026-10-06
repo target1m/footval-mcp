@@ -46,9 +46,10 @@ tool calls; a typical question uses one to three.
 **Claude** (web, desktop, mobile) — Settings → Connectors → **Add custom connector** → name it
 *FootVal*, paste the URL → **Connect** → sign in.
 
-**ChatGPT** — Settings → Apps & Connectors → Advanced settings → turn on **Developer mode** →
-**Create** → name *FootVal*, paste the URL, authentication **OAuth** → sign in, then pick FootVal
-from the **+** menu in a chat.
+**ChatGPT** — open [Plugins](https://chatgpt.com/plugins) → **+** → **Add custom MCP server** →
+name *FootVal*, paste the URL, authentication **OAuth** → confirm and **Create as a plugin** → sign
+in, then type **@FootVal** in a chat (or pick it from the **+** menu). Custom MCP servers depend on
+your ChatGPT plan and workspace settings.
 
 **Claude Code**
 
@@ -72,8 +73,9 @@ code --add-mcp '{"name":"footval","type":"http","url":"https://api.footval.com/m
 ```
 
 **Any other client** — add a remote (Streamable HTTP) server with the URL. The server is a
-standard OAuth 2.1 resource server with dynamic client registration, so clients that speak MCP
-authorization run the sign-in by themselves. **No browser sign-in?** Create a personal API key at
+standard OAuth 2.1 resource server with its own authorization server (dynamic client registration,
+client ID metadata documents, PKCE and OpenID Connect), so clients that speak MCP authorization run
+the sign-in by themselves. **No browser sign-in?** Create a personal API key at
 [footval.com/en/mcp](https://footval.com/en/mcp#account) (shown once, revocable any time) and send
 it as a Bearer token:
 
@@ -134,8 +136,8 @@ below it the market overvalues him. More on the model: [footval.com/en/about](ht
 ## Tools
 
 15 tools, **all read-only** — FootVal never posts, buys or changes anything. Each one declares a
-title and all four MCP hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`,
-`openWorldHint`), so your client can show what a call does before you allow it. Most arguments
+title, all four MCP hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`)
+and its OAuth security scheme, so your client can show what a call does before you allow it. Most arguments
 take plain names ("Arda Güler", "Süper Lig", "Turkey") as well as ids.
 
 ### Valuations
@@ -180,11 +182,13 @@ Every argument, type and default — generated from the server's own registratio
 
 - **Read-only.** No tool writes, posts, buys or deletes anything.
 - **You sign in with Google.** FootVal sees the tool calls your assistant makes — never your
-  conversation.
+  conversation. If your assistant asks for it when you connect (ChatGPT does), FootVal shares your
+  account's e-mail address and name with it; the sign-in screen says so before you allow it.
 - **Free daily allowance** for every account. Usage, connected apps and API keys live at
   [footval.com/en/mcp](https://footval.com/en/mcp#account); disconnecting an app ends its access
   immediately.
-- Full details: [privacy policy](https://footval.com/en/privacy).
+- Full details: [privacy policy](https://footval.com/en/privacy) ·
+  [terms of service](https://footval.com/en/terms) · [help & support](https://footval.com/en/support).
 
 ## Skills (plugin)
 
@@ -199,12 +203,13 @@ to read the answer. This repository is also an installable **plugin** with four 
 | [`stats-and-transfer-news`](skills/stats-and-transfer-news/SKILL.md) | Leaderboards by competition and season; transfer news with its reliability spelled out |
 
 ```
-plugin.json                  portable manifest (Agent Plugins 1.0.0)
+plugin.json                  portable manifest (Agent Plugins 1.0.0) + ChatGPT/Codex listing metadata
 .claude-plugin/plugin.json   the same, for clients that read this path
-.mcp.json                    points at the hosted server
+mcp.json                     the hosted server, for Agent Plugins hosts (Codex, ChatGPT)
+.mcp.json                    the hosted server, for Claude Code
 server.json                  official MCP Registry manifest
 skills/<name>/SKILL.md       one workflow each
-assets/                      logo and README screenshots
+assets/                      logo, plugin icons and README screenshots
 ```
 
 ## Links
@@ -213,6 +218,8 @@ assets/                      logo and README screenshots
 - MCP setup page with a live demo: <https://footval.com/en/mcp>
 - How the model works: <https://footval.com/en/about>
 - Privacy: <https://footval.com/en/privacy>
+- Terms: <https://footval.com/en/terms>
+- Help & support: <https://footval.com/en/support> · admin@footval.com
 - X: [@footval_en](https://x.com/footval_en)
 
 ## About this repository
