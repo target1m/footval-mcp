@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.footval/footval",
+  "title": "FootVal",
+  "description": "Independent football player valuations, live scores, league tables, stat leaders and transfer news.",
+  "version": "1.0.0",
+  "websiteUrl": "https://footval.com/en/mcp",
+  "repository": {
+    "url": "https://github.com/target1m/footval-mcp",
+    "source": "github",
+    "id": "1407204744"
+  },
+  "icons": [
+    {
+      "src": "https://footval.com/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.footval.com/mcp"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "footval": {
+      "type": "http",
+      "url": "https://api.footval.com/mcp"
+    }
+  }
+}

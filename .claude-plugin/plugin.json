@@ -1,0 +1,26 @@
+{
+  "name": "footval",
+  "version": "1.0.0",
+  "description": "Independent football player valuations, live scores, league tables, stat leaders and transfer news. Ask what any player is really worth and why FootVal agrees or disagrees with the market, compare and scout players, and follow scores, match centres and tables — all read-only.",
+  "author": {
+    "name": "FootVal",
+    "url": "https://footval.com/"
+  },
+  "homepage": "https://footval.com/en/mcp",
+  "repository": "https://github.com/target1m/footval-mcp",
+  "license": "MIT",
+  "keywords": [
+    "football",
+    "soccer",
+    "transfer value",
+    "player valuation",
+    "scouting",
+    "live scores",
+    "league tables",
+    "statistics",
+    "transfer news",
+    "premier league",
+    "la liga",
+    "super lig"
+  ]
+}
