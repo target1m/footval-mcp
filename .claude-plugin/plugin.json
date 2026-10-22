@@ -8,6 +8,7 @@
   },
   "homepage": "https://footval.com/en/mcp",
   "repository": "https://github.com/target1m/footval-mcp",
+  "privacyPolicyUrl": "https://footval.com/en/privacy",
   "license": "MIT",
   "keywords": [
     "football",

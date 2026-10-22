@@ -57,7 +57,21 @@ your ChatGPT plan and workspace settings.
 claude mcp add --transport http footval https://api.footval.com/mcp
 ```
 
-Then run `/mcp`, choose *footval* → **Authenticate**.
+Then run `/mcp`, choose *footval* → **Authenticate**. To get the four [skills](#skills-plugin)
+with it, install this repository as a plugin instead:
+
+```
+/plugin marketplace add target1m/footval-mcp
+/plugin install footval@footval-mcp
+```
+
+**Gemini CLI** — the extension adds the server and the four [skills](#skills-plugin):
+
+```bash
+gemini extensions install https://github.com/target1m/footval-mcp
+```
+
+Then run `/mcp auth footval` once inside Gemini CLI to sign in.
 
 **Cursor** — use the **Add to Cursor** button above, or add it to `~/.cursor/mcp.json` and click
 *Needs login*:
@@ -203,13 +217,16 @@ to read the answer. This repository is also an installable **plugin** with four 
 | [`stats-and-transfer-news`](skills/stats-and-transfer-news/SKILL.md) | Leaderboards by competition and season; transfer news with its reliability spelled out |
 
 ```
-plugin.json                  portable manifest (Agent Plugins 1.0.0) + ChatGPT/Codex listing metadata
-.claude-plugin/plugin.json   the same, for clients that read this path
-mcp.json                     the hosted server, for Agent Plugins hosts (Codex, ChatGPT)
-.mcp.json                    the hosted server, for Claude Code
-server.json                  official MCP Registry manifest
-skills/<name>/SKILL.md       one workflow each
-assets/                      logo, plugin icons and README screenshots
+plugin.json                       portable manifest (Agent Plugins 1.0.0) + ChatGPT/Codex listing metadata
+.claude-plugin/plugin.json        the same, for clients that read this path
+.claude-plugin/marketplace.json   makes this repository a Claude Code plugin marketplace
+mcp.json                          the hosted server, for Agent Plugins hosts (Codex, ChatGPT)
+.mcp.json                         the hosted server, for Claude Code
+gemini-extension.json             Gemini CLI extension (server + skills, OAuth sign-in)
+server.json                       official MCP Registry manifest (com.footval/footval)
+glama.json                        Glama maintainers
+skills/<name>/SKILL.md            one workflow each
+assets/                           logo, plugin icons and README screenshots
 ```
 
 ## Links
@@ -220,6 +237,8 @@ assets/                      logo, plugin icons and README screenshots
 - Privacy: <https://footval.com/en/privacy>
 - Terms: <https://footval.com/en/terms>
 - Help & support: <https://footval.com/en/support> · admin@footval.com
+- Official MCP Registry: [`com.footval/footval`](https://registry.modelcontextprotocol.io/v0.1/servers/com.footval%2Ffootval/versions/latest)
+- Security reports: [SECURITY.md](SECURITY.md)
 - X: [@footval_en](https://x.com/footval_en)
 
 ## About this repository
