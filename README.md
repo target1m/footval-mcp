@@ -6,13 +6,13 @@
 
 **What is every footballer really worth? Ask your assistant.**
 
-Independent player valuations with the reasons behind them, plus live scores, match centres,
-league tables, stat leaders and transfer news — in Claude, ChatGPT, Cursor, VS Code and any
-other MCP client.
+Independent player valuations with the reasons behind them, daily match predictions with a
+public track record, plus live scores, match centres, league tables, stat leaders and transfer
+news — in Claude, ChatGPT, Cursor, VS Code and any other MCP client.
 
 [![Setup & demo](https://img.shields.io/badge/footval.com-setup%20%26%20demo-1C6B43)](https://footval.com/en/mcp)
 [![MCP](https://img.shields.io/badge/MCP-Streamable%20HTTP-0B3A23)](https://modelcontextprotocol.io)
-[![Read-only](https://img.shields.io/badge/tools-15%20read--only-1C6B43)](#tools)
+[![Read-only](https://img.shields.io/badge/tools-16%20read--only-1C6B43)](#tools)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 [![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=footval&config=eyJ1cmwiOiJodHRwczovL2FwaS5mb290dmFsLmNvbS9tY3AifQ%3D%3D)
@@ -40,7 +40,7 @@ Nothing to install, nothing to run — FootVal is a remote server:
 https://api.footval.com/mcp
 ```
 
-Sign in with Google when your client asks. Every account includes a **free daily allowance** of
+Sign in with Apple or Google when your client asks. Every account includes a **free daily allowance** of
 tool calls; a typical question uses one to three.
 
 **Claude** (web, desktop, mobile) — Settings → Connectors → **Add custom connector** → name it
@@ -108,6 +108,7 @@ claude mcp add --transport http footval https://api.footval.com/mcp --header "Au
 | *"What are today's scores?"* | `get_matches` — live, finished and upcoming, by competition |
 | *"Show me the match centre of the last Champions League final."* | `get_match` — events, team stats, line-ups with ratings |
 | *"Show me the Süper Lig table."* | `get_standings` — points, form, qualification and relegation zones |
+| *"What are FootVal's match predictions for today?"* | `get_predictions` — the model's 10 most confident calls of the day, graded after the final whistle |
 | *"Who are the Champions League top scorers?"* | `get_stat_leaders` — season leaderboards across competitions |
 | *"Any Galatasaray transfer news?"* | `get_transfer_news` — confirmed deals and rumours with their reliability |
 
@@ -138,18 +139,17 @@ market rather than inventing a story.
 | Factor | What it measures |
 |---|---|
 | **Performance** | Output against price inside the player's position and league-strength cohort — performing above his price lifts the value |
-| **Potential** | The age curve around each position's prime: development premium when young, depreciation past the peak |
+| **Potential** | Where players of the same age, position and price have historically gone next: young players read above their price (less so the pricier they already are), players past their prime below it |
 | **Contract** | Leverage the selling club loses as the contract runs down |
-| **Durability** | Injuries and availability over the last two seasons |
+| **Durability** | Injuries over the last two seasons |
 | **Reputation** | International caps and trophies |
-| **Form** | The latest season against the previous one |
 
 Within **±5 %** of the market the verdict is *fair*; above it the market undervalues the player,
 below it the market overvalues him. More on the model: [footval.com/en/about](https://footval.com/en/about).
 
 ## Tools
 
-15 tools, **all read-only** — FootVal never posts, buys or changes anything. Each one declares a
+16 tools, **all read-only** — FootVal never posts, buys or changes anything. Each one declares a
 title, all four MCP hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`)
 and its OAuth security scheme, so your client can show what a call does before you allow it. Most arguments
 take plain names ("Arda Güler", "Süper Lig", "Turkey") as well as ids.
@@ -182,6 +182,12 @@ take plain names ("Arda Güler", "Süper Lig", "Turkey") as well as ids.
 | `get_team_fixtures` | A club's or national team's next or most recent matches. |
 | `get_standings` | A competition's table with form and qualification / relegation zones. |
 
+### Predictions
+
+| Tool | What it does |
+|---|---|
+| `get_predictions` | FootVal's daily match predictions: the 10 most confident calls of its statistical model (match result, double chance, total goals or both teams to score), locked in every morning before the first kick-off, each with the model's probability, the likeliest score and scorers, the live or final score and whether it came in, plus the hit rate over the last 7 and 30 days. Model probabilities, not odds or betting advice. |
+
 ### Statistics & transfers
 
 | Tool | What it does |
@@ -195,7 +201,7 @@ Every argument, type and default — generated from the server's own registratio
 ## Privacy & limits
 
 - **Read-only.** No tool writes, posts, buys or deletes anything.
-- **You sign in with Google.** FootVal sees the tool calls your assistant makes — never your
+- **You sign in with Apple or Google.** FootVal sees the tool calls your assistant makes — never your
   conversation. If your assistant asks for it when you connect (ChatGPT does), FootVal shares your
   account's e-mail address and name with it; the sign-in screen says so before you allow it.
 - **Free daily allowance** for every account. Usage, connected apps and API keys live at
@@ -213,7 +219,7 @@ to read the answer. This repository is also an installable **plugin** with four 
 |---|---|
 | [`value-and-compare-players`](skills/value-and-compare-players/SKILL.md) | Read a valuation honestly: value vs market, the ±5 % fair band, what each factor means, and when thin data keeps the value close to the market |
 | [`scout-and-rank-players`](skills/scout-and-rank-players/SKILL.md) | Turn a scouting brief into filters, pick the right ranking, read squads, leagues and national teams |
-| [`follow-matches-and-tables`](skills/follow-matches-and-tables/SKILL.md) | Scores, match centres, fixtures and tables — UTC dates, local kick-off times, never an invented score |
+| [`follow-matches-and-tables`](skills/follow-matches-and-tables/SKILL.md) | Scores, match centres, fixtures, tables and the daily predictions — UTC dates, local kick-off times, never an invented score, probabilities never sold as certainties |
 | [`stats-and-transfer-news`](skills/stats-and-transfer-news/SKILL.md) | Leaderboards by competition and season; transfer news with its reliability spelled out |
 
 ```

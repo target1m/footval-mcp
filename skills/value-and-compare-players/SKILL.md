@@ -29,13 +29,14 @@ or three that move most, in plain words:
 - **performance** — output against price inside the player's position and league-strength
   cohort. Performing above his price lifts the value; below it, discounts it. With few minutes
   the effect is deliberately scaled down.
-- **potential** — the age curve around each position's prime (forwards 25, midfielders 26,
-  defenders 27, goalkeepers 29): younger and performing earns a development premium; past the
-  prime, a discount.
+- **potential** — where players of the same age, position and price have historically gone
+  next: young players read above their price (less so the pricier they already are), players
+  past their prime below it.
 - **contract** — close to expiry the selling club loses leverage (a soft Bosman discount).
-- **durability** — injuries and availability over the last two seasons.
+- **durability** — injuries over the last two seasons.
 - **reputation** — international caps and trophies; a small band.
-- **form** — the latest season against the previous one, capped at ±15 %.
+- **form** — the latest season against the previous one, capped at ±15 %. FootVal currently runs
+  with it switched off, so most breakdowns don't list it.
 
 When a player has little or no recent data, FootVal keeps the value close to the market. Say so
 instead of inventing reasons for a gap that isn't there.

@@ -1,20 +1,26 @@
 {
   "name": "footval",
-  "version": "1.0.0",
-  "description": "Independent football player valuations, live scores, league tables, stat leaders and transfer news. Ask what any player is really worth and why FootVal agrees or disagrees with the market, compare and scout players, and follow scores, match centres and tables — all read-only.",
+  "displayName": "FootVal",
+  "version": "2.0.0",
+  "description": "Independent football player valuations with the reasons behind them, daily match predictions with a public track record, live scores, match centres, league tables, stat leaders and transfer news. Ask what any player is really worth and why FootVal agrees or disagrees with the market, compare and scout players, check the model's calls for today's matches, and follow scores and tables — all read-only.",
   "author": {
     "name": "FootVal",
+    "email": "admin@footval.com",
     "url": "https://footval.com/"
   },
   "homepage": "https://footval.com/en/mcp",
   "repository": "https://github.com/target1m/footval-mcp",
+  "documentationUrl": "https://footval.com/en/mcp",
+  "supportUrl": "https://footval.com/en/support",
   "privacyPolicyUrl": "https://footval.com/en/privacy",
+  "termsOfServiceUrl": "https://footval.com/en/terms",
   "license": "MIT",
   "keywords": [
     "football",
     "soccer",
     "transfer value",
     "player valuation",
+    "match predictions",
     "scouting",
     "live scores",
     "league tables",

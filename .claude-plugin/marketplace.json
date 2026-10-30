@@ -5,15 +5,15 @@
     "email": "admin@footval.com"
   },
   "metadata": {
-    "description": "FootVal MCP — independent football player valuations, live scores, league tables, stat leaders and transfer news. Read-only.",
-    "version": "1.0.0"
+    "description": "FootVal MCP — independent football player valuations, daily match predictions, live scores, league tables, stat leaders and transfer news. Read-only.",
+    "version": "2.0.0"
   },
   "plugins": [
     {
       "name": "footval",
       "source": "./",
-      "description": "Independent football player valuations, live scores, league tables, stat leaders and transfer news. Ask what any player is really worth and why FootVal agrees or disagrees with the market, compare and scout players, and follow scores, match centres and tables — all read-only.",
-      "version": "1.0.0",
+      "description": "Independent football player valuations with the reasons behind them, daily match predictions with a public track record, live scores, match centres, league tables, stat leaders and transfer news. Ask what any player is really worth and why FootVal agrees or disagrees with the market, compare and scout players, check the model's calls for today's matches, and follow scores and tables — all read-only.",
+      "version": "2.0.0",
       "author": {
         "name": "FootVal",
         "url": "https://footval.com/"
@@ -26,6 +26,7 @@
         "soccer",
         "transfer value",
         "player valuation",
+        "match predictions",
         "scouting",
         "live scores",
         "league tables",

@@ -1,6 +1,6 @@
 # FootVal MCP tools — reference
 
-Generated from the server's own tool registrations (server v1.0.0). Endpoint:
+Generated from the server's own tool registrations (server v2.0.0). Endpoint:
 `https://api.footval.com/mcp` (Streamable HTTP, OAuth sign-in).
 
 Every tool is read-only: `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true`.
@@ -156,6 +156,17 @@ Open-world: **yes (API-Football)**
 |---|---|---|---|
 | `league` | string (≤ 60 chars) | **required** | League code or name, e.g. "GB1", "Premier League", "TR1", "UCL" |
 | `season` | integer (2010–2100) | — | Season start year, e.g. 2025 for 2025/26 (default: current) |
+
+## `get_predictions` — Match predictions
+
+FootVal's daily match predictions. Every morning, before the first kick-off, FootVal's statistical model locks in the day's 10 most confident calls across the leagues it follows (match result, double chance, total goals or both teams to score) and marks each right or wrong after the final whistle. Returns one prediction day — the model's probability for each call, its likeliest score and scorers, the live or final score — plus the model's hit rate over the last 7 and 30 days. Only those 10 calls are published, not a prediction for every match. Model probabilities, not odds.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `day` | string (≤ 20 chars) | `"today"` | "today" (the current prediction day), "yesterday", or a date as YYYY-MM-DD. A prediction day runs 09:00 → 09:00 UTC |
+| `team` | string (≤ 60 chars) | — | Only the day's predictions for matches involving this team (part of its name) |
 
 ## `get_stat_leaders` — Statistics leaders
 
