@@ -1,6 +1,6 @@
 # FootVal MCP tools — reference
 
-Generated from the server's own tool registrations (server v2.0.0). Endpoint:
+Generated from the server's own tool registrations (server v2.1.0). Endpoint:
 `https://api.footval.com/mcp` (Streamable HTTP, OAuth sign-in).
 
 Every tool is read-only: `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true`.
@@ -125,7 +125,7 @@ Open-world: **yes (API-Football)**
 
 ## `get_match` — Match centre
 
-One match in detail: score and status, the event timeline (goals, cards, substitutions, VAR), team statistics (possession, shots, xG when available…) and line-ups with player ratings. Take match ids from get_matches or get_team_fixtures.
+One match in detail: score and status, the event timeline (goals, cards, substitutions, VAR), team statistics (possession, shots, xG when available…), line-ups with player ratings and, for the leagues FootVal values, its model's prediction (win/draw/loss chances, likeliest score) with the predicted line-ups until the official ones are out. Take match ids from get_matches or get_team_fixtures; get_match_prediction has the full prediction.
 
 Open-world: **yes (API-Football)**
 
@@ -159,7 +159,7 @@ Open-world: **yes (API-Football)**
 
 ## `get_predictions` — Match predictions
 
-FootVal's daily match predictions. Every morning, before the first kick-off, FootVal's statistical model locks in the day's 10 most confident calls across the leagues it follows (match result, double chance, total goals or both teams to score) and marks each right or wrong after the final whistle. Returns one prediction day — the model's probability for each call, its likeliest score and scorers, the live or final score — plus the model's hit rate over the last 7 and 30 days. Only those 10 calls are published, not a prediction for every match. Model probabilities, not odds.
+FootVal's daily match predictions: every morning, before the first kick-off, FootVal's statistical model locks in the day's 10 most confident calls across the leagues it follows (match result, double chance, total goals or both teams to score) and marks each right or wrong after the final whistle. Returns one prediction day — the model's probability for each call, its likeliest score and scorers, the live or final score — plus the model's hit rate over the last 7 and 30 days. For one particular match (any match of those leagues) use get_match_prediction. Model probabilities, not odds.
 
 Open-world: **yes (API-Football)**
 
@@ -167,6 +167,28 @@ Open-world: **yes (API-Football)**
 |---|---|---|---|
 | `day` | string (≤ 20 chars) | `"today"` | "today" (the current prediction day), "yesterday", or a date as YYYY-MM-DD. A prediction day runs 09:00 → 09:00 UTC |
 | `team` | string (≤ 60 chars) | — | Only the day's predictions for matches involving this team (part of its name) |
+
+## `get_match_prediction` — Match prediction
+
+FootVal's prediction for one match: the model's chances of a home win, a draw and an away win, the likeliest scores, total goals and both teams to score, the likeliest scorers and the predicted line-ups (the confirmed ones about an hour before kick-off), and after the final whistle whether it came in. Covers every match of the leagues FootVal values from about a day and a half before kick-off. Pass a match id, a team (its next match) or a league (its predicted matches, soonest first); with none, the next predicted matches in every league. For the day's 10 most confident calls and the model's track record use get_predictions. Model probabilities, not odds.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `match_id` | integer | — | Match id from get_matches / get_team_fixtures |
+| `team` | string (≤ 60 chars) | — | A team's name: the prediction for its next match |
+| `league` | string (≤ 60 chars) | — | League code or name, e.g. "GB1", "Premier League", "Süper Lig": its predicted matches |
+
+## `get_season_projection` — Season projection
+
+FootVal's projected final table for a league: its match model plays the rest of the season out thousands of times, giving every club its chance of winning the title, finishing in the top four and the Champions League places, reaching Europe and going down, plus its expected points. Answers who will win the league, the title race, the top-four race and the relegation battle. Covers the round-robin leagues FootVal values (Premier League, LaLiga, Serie A, Bundesliga, Ligue 1, Eredivisie, Primeira Liga, Süper Lig and others); refreshed every 6 hours. Model probabilities, not odds.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `league` | string (≤ 60 chars) | **required** | League code or name, e.g. "GB1", "Premier League", "Süper Lig" |
 
 ## `get_stat_leaders` — Statistics leaders
 

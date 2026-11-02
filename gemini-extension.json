@@ -1,7 +1,7 @@
 {
   "name": "footval",
-  "version": "2.0.0",
-  "description": "Independent football player valuations, daily match predictions, live scores, league tables, stat leaders and transfer news. Read-only.",
+  "version": "2.1.0",
+  "description": "Football match predictions for every game, title and relegation chances, player valuations, live scores, league tables, stat leaders and transfer news. Read-only.",
   "mcpServers": {
     "footval": {
       "httpUrl": "https://api.footval.com/mcp",

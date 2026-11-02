@@ -108,6 +108,8 @@ claude mcp add --transport http footval https://api.footval.com/mcp --header "Au
 | *"What are today's scores?"* | `get_matches` — live, finished and upcoming, by competition |
 | *"Show me the match centre of the last Champions League final."* | `get_match` — events, team stats, line-ups with ratings |
 | *"Show me the Süper Lig table."* | `get_standings` — points, form, qualification and relegation zones |
+| *"Predict Real Madrid's next match: chances, likely scorers and line-ups."* | `get_match_prediction` — win/draw/loss chances, likeliest scores, goals, likeliest scorers, predicted line-ups |
+| *"Who will win the Premier League, and who will go down?"* | `get_season_projection` — every club's title, top-four, Europe and relegation chances |
 | *"What are FootVal's match predictions for today?"* | `get_predictions` — the model's 10 most confident calls of the day, graded after the final whistle |
 | *"Who are the Champions League top scorers?"* | `get_stat_leaders` — season leaderboards across competitions |
 | *"Any Galatasaray transfer news?"* | `get_transfer_news` — confirmed deals and rumours with their reliability |
@@ -186,6 +188,8 @@ take plain names ("Arda Güler", "Süper Lig", "Turkey") as well as ids.
 
 | Tool | What it does |
 |---|---|
+| `get_match_prediction` | FootVal's prediction for one match — by match id, team (its next match) or league (its upcoming matches): the model's home win, draw and away win chances, the likeliest scores, total goals and both teams to score, the likeliest scorers, the predicted line-ups (the confirmed ones about an hour before kick-off) and, after the final whistle, whether it came in. Every match of the leagues FootVal values, from about a day and a half before kick-off. |
+| `get_season_projection` | A league's projected final table: the rest of the season played out thousands of times with the match model's ratings — each club's chance of the title, the top four and the Champions League places, Europe and relegation, and its expected points. Refreshed every 6 hours. |
 | `get_predictions` | FootVal's daily match predictions: the 10 most confident calls of its statistical model (match result, double chance, total goals or both teams to score), locked in every morning before the first kick-off, each with the model's probability, the likeliest score and scorers, the live or final score and whether it came in, plus the hit rate over the last 7 and 30 days. Model probabilities, not odds or betting advice. |
 
 ### Statistics & transfers

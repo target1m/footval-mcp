@@ -1,8 +1,8 @@
 {
   "name": "footval",
   "displayName": "FootVal",
-  "version": "2.0.0",
-  "description": "Independent football player valuations with the reasons behind them, daily match predictions with a public track record, live scores, match centres, league tables, stat leaders and transfer news. Ask what any player is really worth and why FootVal agrees or disagrees with the market, compare and scout players, check the model's calls for today's matches, and follow scores and tables — all read-only.",
+  "version": "2.1.0",
+  "description": "Football match predictions for every game of Europe's top leagues (win, draw and loss chances, likeliest scores, likely scorers, predicted line-ups), season projections with each club's title, top-four and relegation chances, and independent player valuations with the reasons behind them — plus live scores, match centres, league tables, stat leaders and transfer news. Ask who will win a match or the league, what any player is really worth and why, and follow scores and tables — all read-only.",
   "author": {
     "name": "FootVal",
     "email": "admin@footval.com",

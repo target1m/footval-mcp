@@ -1,6 +1,6 @@
 ---
 name: follow-matches-and-tables
-description: Live football scores, results, fixtures, match centres, league tables and FootVal's daily match predictions — today's games, a team's next or last matches, one match's event timeline, statistics and line-ups, the current standings, and the model's calls for the day with its track record. Use for "what's the score", "who plays tonight", "when is Galatasaray's next game", "show me the Süper Lig table", "how did yesterday's Champions League games go", "what does FootVal predict today".
+description: Live football scores, results, fixtures, match centres, league tables and FootVal's predictions — today's games, a team's next or last matches, one match's event timeline, statistics and line-ups, the current standings, the model's prediction for any match (chances, likeliest score and scorers, predicted line-ups), its 10 most confident calls of the day with their track record, and each club's title and relegation chances. Use for "what's the score", "who plays tonight", "when is Galatasaray's next game", "show me the Süper Lig table", "who will win Arsenal vs Chelsea", "predicted line-ups for the derby", "what does FootVal predict today", "who will win the league", "who goes down".
 ---
 
 # Scores, matches and tables
@@ -13,8 +13,12 @@ description: Live football scores, results, fixtures, match centres, league tabl
 - One team's schedule → `get_team_fixtures` (`direction`: `next` or `last`, `count` 1–10; set
   `national: true` when a national team shares its name with a club).
 - A table → `get_standings` (current season by default; `season` is the start year).
-- FootVal's predictions → `get_predictions` (`day`: `today`, `yesterday` or a `YYYY-MM-DD`
-  date; `team` keeps only that team's matches).
+- One match's prediction → `get_match_prediction` with a `match_id`, a `team` (its next match) or a
+  `league` (its upcoming matches); it carries the predicted line-ups too. `get_match` also shows the
+  chances for a match FootVal predicts.
+- The day's 10 most confident calls and the track record → `get_predictions` (`day`: `today`,
+  `yesterday` or a `YYYY-MM-DD` date; `team` keeps only that team's matches).
+- Who wins the league, the top-four race, the relegation battle → `get_season_projection` (`league`).
 
 Full argument list:
 [`../value-and-compare-players/references/tools.md`](../value-and-compare-players/references/tools.md).
@@ -42,10 +46,17 @@ Full argument list:
 
 ## Predictions
 
-- Every morning before the first kick-off FootVal's statistical model locks in its 10 most
-  confident calls of the day (match result, double chance, total goals or both teams to score)
-  and grades each one after the final whistle. Only those calls exist — there is no prediction
-  for every match, so don't invent one for a match that isn't on the list.
+- FootVal's statistical model predicts every match of the leagues it values from about a day and a
+  half before kick-off (`get_match_prediction`); cups, other leagues and matches further ahead have
+  no prediction — say so rather than inventing one.
+- Every morning before the first kick-off the model also locks in its 10 most confident calls of the
+  day (match result, double chance, total goals or both teams to score) and grades each one after
+  the final whistle (`get_predictions`).
+- Predicted line-ups come from each side's recent starters minus the injured and suspended; the
+  official ones replace them about an hour before kick-off — call it "predicted", not "confirmed",
+  until then.
+- Season projections are probabilities from simulating the rest of the season; ties on points are
+  split by goal difference (head-to-head rules aren't modelled).
 - A prediction day runs 09:00 → 09:00 UTC, so a late match can belong to the previous day's list.
 - Quote the model's probability as a probability ("the model gives it 85 %"), never as a
   certainty, and give the running hit rate alongside. FootVal shows no odds and gives no betting

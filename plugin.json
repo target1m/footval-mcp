@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "footval",
-  "version": "2.0.0",
-  "description": "Independent football player valuations with an explainable factor breakdown next to the market value, plus daily match predictions with a public track record, scouting, rankings, live scores, match centres, league tables, season statistics and transfer news.",
+  "version": "2.1.0",
+  "description": "Football match predictions for every game of Europe's top leagues — win, draw and loss chances, likeliest score, likely scorers and predicted line-ups — plus season projections with each club's title, top-four and relegation chances, independent player valuations with the reasons behind them, scouting, live scores, match centres, league tables, season statistics and transfer news.",
   "author": {
     "name": "FootVal",
     "url": "https://footval.com/",
