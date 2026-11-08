@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/target1m/footval-mcp/master/assets/logo.svg" width="76" height="76" alt="FootVal">
+<img src="https://raw.githubusercontent.com/target1m/footval-mcp/master/assets/logo.png" width="76" height="76" alt="FootVal">
 
 # FootVal MCP server
 
